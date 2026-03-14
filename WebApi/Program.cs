@@ -12,7 +12,9 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddAuthorization();
-        builder.Services.AddScoped<ICarRepository, MemoryCarRepository>();
+        builder.Services.AddScoped<IParkingGateRepository, InMemoryParkingGateRepository<ParkingGate>>();
+        builder.Services.AddScoped<IParkingSessionRepository, InMemoryParkingSessionRepository<ParkingSession>>();
+        builder.Services.AddScoped<IVehicleRepository, InMemoryVehicleRepository<Vehicle>>();
 
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
@@ -31,11 +33,7 @@ public class Program
 
         
 
-        app.MapGet("/api/cars/{number}", async (ICarRepository repository, string number, HttpContext httpContext) =>
-            {
-                return await repository.FindByPlateNumber(number);
-            })
-            .WithName("GetWeatherForecast");
+        
 
         app.Run();
     }

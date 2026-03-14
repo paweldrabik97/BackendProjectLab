@@ -1,12 +1,14 @@
 using AppCore.Models;
+using AppCore.Wrappers;
 
 namespace AppCore.Repositories;
 
-public interface IGenericRepository<T>
+public interface IGenericRepositoryAsync<T> where T : EntityBase
 {
-    Task<T?> FindById(int id);
-    Task<IEnumerable<T>> FindAll();
-    Task<T> Add(T entity);
-    Task DeleteById(int id);
-    Task<T> Update(T entity);
+    Task<T?> FindByIdAsync(Guid id);
+    Task<IEnumerable<T>> FindAllAsync();
+    Task<PagedResult<T>> FindPagedAsync(int page, int pageSize);
+    Task<T> AddAsync(T entity);
+    Task<T> UpdateAsync(Guid id,T entity);
+    Task RemoveByIdAsync(Guid id);
 }
