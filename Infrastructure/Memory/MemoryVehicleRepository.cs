@@ -3,7 +3,7 @@ using AppCore.Repositories;
 
 namespace Infrastructure.Memory;
 
-public class InMemoryVehicleRepository<T> : MemoryGenericRepository<Vehicle>, IVehicleRepository
+public class MemoryVehicleRepository<T> : MemoryGenericRepository<Vehicle>, IVehicleRepository
 {
     public Task<Vehicle?> FindByPlateNumber(string plate)
     {

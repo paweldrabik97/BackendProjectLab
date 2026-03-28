@@ -1,3 +1,4 @@
+using AppCore.Dto;
 using AppCore.Models;
 using AppCore.Repositories;
 using Infrastructure.Memory;
@@ -10,11 +11,17 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        builder.Services.AddControllers();
+
+        builder.Services.AddOpenApi();
+
         // Add services to the container.
         builder.Services.AddAuthorization();
-        builder.Services.AddScoped<IParkingGateRepository, InMemoryParkingGateRepository<ParkingGate>>();
-        builder.Services.AddScoped<IParkingSessionRepository, InMemoryParkingSessionRepository<ParkingSession>>();
-        builder.Services.AddScoped<IVehicleRepository, InMemoryVehicleRepository<Vehicle>>();
+        builder.Services.AddSingleton<IParkingGateRepository, MemoryParkingGateRepository<ParkingGate>>();
+        builder.Services.AddScoped<IParkingSessionRepository, MemoryParkingSessionRepository<ParkingSession>>();
+        builder.Services.AddScoped<IVehicleRepository, MemoryVehicleRepository<Vehicle>>();
+        builder.Services.AddSingleton<IParkingUnitOfWork, MemoryParkingUnitOfWork>();
+        builder.Services.AddSingleton<IParkingGateService, MemoryParkingGateService>();
 
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
@@ -28,10 +35,10 @@ public class Program
         }
 
         app.UseHttpsRedirection();
-
+        
         app.UseAuthorization();
 
-        
+        app.MapControllers();
 
         
 

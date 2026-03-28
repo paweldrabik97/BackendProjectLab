@@ -15,7 +15,6 @@ public class MemoryGenericRepositoryTest
         var expected = new Vehicle()
         {
             LicensePlate = "TK 8434Y"
-            // pozostałe właściwości
         };
         // Act
         await _repo.AddAsync(expected);
@@ -36,7 +35,6 @@ public class MemoryGenericRepositoryTest
         await _repo.AddAsync(firstVehicle);
 
         // Act & Assert
-        // Assert.ThrowsAsync sprawdza, czy wywołanie kodu wyrzuci konkretny wyjątek
         await Assert.ThrowsAsync<InvalidOperationException>(() => _repo.AddAsync(duplicateVehicle));
     }
 
@@ -77,13 +75,13 @@ public class MemoryGenericRepositoryTest
     [Fact]
     public async Task FindPagedAsync_ReturnsCorrectPageAndCount()
     {
-        // Arrange - dodajemy 5 elementów
+        // Arrange
         for (int i = 1; i <= 5; i++)
         {
             await _repo.AddAsync(new Vehicle { LicensePlate = $"TEST {i}" });
         }
 
-        // Act - prosimy o 2. stronę, gdzie na stronie są 2 elementy (czyli elementy 3 i 4)
+        
         var pagedResult = await _repo.FindPagedAsync(page: 2, pageSize: 2);
 
         // Assert
@@ -139,7 +137,7 @@ public class MemoryGenericRepositoryTest
 
         // Assert
         var result = await _repo.FindByIdAsync(vehicle.Id);
-        Assert.Null(result); // Powinien być null, bo usunęliśmy
+        Assert.Null(result);
     }
 
     [Fact]

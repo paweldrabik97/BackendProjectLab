@@ -9,36 +9,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c5aae5d-62bd-46e3-a9c8-a2c012dc11b3" name="Changes" comment="Init">
-      <change afterPath="$PROJECT_DIR$/AppCore/Dto/ParkingDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppCore/Models/CaptureType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppCore/Models/EntityBase.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppCore/Models/GateType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppCore/Models/ParkingGate.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppCore/Models/ParkingSession.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppCore/Models/ParkingTariff.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppCore/Models/Vehicle.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppCore/Repositories/IParkingGateRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppCore/Repositories/IParkingSessionRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppCore/Repositories/IVehicleRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppCore/Wrappers/PagedResult.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Memory/InMemoryParkingGateRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Memory/InMemoryParkingSessionRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Memory/InMemoryVehicleRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Infrastructure/Memory/MemoryGenericRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/UnitTest/MemoryGenericRepositoryTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppCore/Enums/CaptureType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppCore/Enums/GateType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppCore/Repositories/IParkingGateService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppCore/Repositories/IParkingUnitOfWork.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Memory/MemoryParkingGateRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Memory/MemoryParkingGateService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/Memory/MemoryParkingUnitOfWork.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppCore/Models/Car.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppCore/Repositories/ICarRepository.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppCore/Repositories/IGenericRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppCore/Repositories/IGenericRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackendProjectLab.sln" beforeDir="false" afterPath="$PROJECT_DIR$/BackendProjectLab.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Memory/MemoryCarRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppCore/Dto/ParkingDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppCore/Dto/ParkingDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppCore/Models/CaptureType.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppCore/Models/GateType.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppCore/Models/ParkingGate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppCore/Models/ParkingGate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Memory/InMemoryParkingGateRepository.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Memory/InMemoryParkingSessionRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Memory/MemoryParkingSessionRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Memory/InMemoryVehicleRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Memory/MemoryVehicleRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UnitTest/MemoryGenericRepositoryTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UnitTest/MemoryGenericRepositoryTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="autoShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -83,39 +78,39 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="3AIwy2zlouYf0muh9nDWovH118A" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.WebApi: http.executor": "Run",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.WebApi: http.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.WebApi: http">
     <configuration name="WebApi: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebApi/WebApi.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net9.0" />
       <option name="LAUNCH_PROFILE_NAME" value="http" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
       <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <option name="AUTO_ATTACH_CHILDREN" value="0" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -124,14 +119,13 @@
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebApi/WebApi.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net9.0" />
       <option name="LAUNCH_PROFILE_NAME" value="https" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
       <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
-      <option name="AUTO_ATTACH_CHILDREN" value="0" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -185,23 +179,5 @@
     <MESSAGE value="init2" />
     <MESSAGE value="Init" />
     <option name="LAST_COMMIT_MESSAGE" value="Init" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
-          <option name="timeStamp" value="2" />
-        </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
-          <option name="timeStamp" value="3" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

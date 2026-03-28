@@ -1,3 +1,7 @@
+using AppCore.Models;
+using AppCore.Enums;
+
+
 namespace AppCore.Dto;
 
 // --- CameraCapture ---
@@ -87,7 +91,20 @@ public record ParkingGateDto(
     string Type,
     string Location,
     bool IsOperational
-);
+)
+{
+    public ParkingGate ToEntity()
+    {
+        return new ParkingGate()
+        {
+            Id = Id,
+            Name = Name,
+            Type = Enum.Parse<GateType>(Type),
+            Location = Location,
+            IsOperational = IsOperational
+        };
+    }
+};
 
 public record CreateGateDto(
     string Name,

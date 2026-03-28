@@ -1,3 +1,5 @@
+using AppCore.Enums;
+
 namespace AppCore.Models;
 
 public class ParkingGate : EntityBase

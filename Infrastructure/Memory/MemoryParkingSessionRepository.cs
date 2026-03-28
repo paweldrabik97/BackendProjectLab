@@ -4,7 +4,7 @@ using AppCore.Dto;
 
 namespace Infrastructure.Memory;
 
-public class InMemoryParkingSessionRepository<T> : MemoryGenericRepository<ParkingSession>, IParkingSessionRepository
+public class MemoryParkingSessionRepository<T> : MemoryGenericRepository<ParkingSession>, IParkingSessionRepository
 {
     public Task<ParkingSession?> GetByLicensePlateAsync(string licensePlate)
     {
