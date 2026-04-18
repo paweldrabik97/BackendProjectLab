@@ -4,3 +4,21 @@ GET {{WebApi_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+GET {{WebApi_HostAddress}}/api/gates
+Accept: application/json
+
+###
+GET {{WebApi_HostAddress}}/api/gates/8b44e54e-62c6-4ff2-bde9-3ee6a4fbf80f
+Accept: application/json
+
+###
+POST {{WebApi_HostAddress}}/api/gates
+Content-Type: application/json
+
+{
+  "Name": "ABaaa",
+  "Type": "Entry",
+  "Location": "Main Gate",
+  "IsOperational": "false"
+}
