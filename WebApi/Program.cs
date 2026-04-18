@@ -18,8 +18,8 @@ public class Program
         // Add services to the container.
         builder.Services.AddAuthorization();
         builder.Services.AddSingleton<IParkingGateRepository, MemoryParkingGateRepository<ParkingGate>>();
-        builder.Services.AddScoped<IParkingSessionRepository, MemoryParkingSessionRepository<ParkingSession>>();
-        builder.Services.AddScoped<IVehicleRepository, MemoryVehicleRepository<Vehicle>>();
+        builder.Services.AddSingleton<IParkingSessionRepository, MemoryParkingSessionRepository<ParkingSession>>();
+        builder.Services.AddSingleton<IVehicleRepository, MemoryVehicleRepository<Vehicle>>();
         builder.Services.AddSingleton<IParkingUnitOfWork, MemoryParkingUnitOfWork>();
         builder.Services.AddSingleton<IParkingGateService, MemoryParkingGateService>();
 

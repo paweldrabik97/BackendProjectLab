@@ -1,13 +1,17 @@
 using AppCore.Dto;
 using AppCore.Repositories;
+using AppCore.Wrappers;
+using AppCore.Models;
 
 namespace Infrastructure.Memory;
 
 public class MemoryParkingGateService(IParkingUnitOfWork unit) : IParkingGateService
 {
-    public Task<List<ParkingGateDto>> GetAll()
+    public async Task<PagedResult<ParkingGateDto>> GetAll(int page, int pageSize)
     {
-        throw new NotImplementedException();
+        var paged = await unit.Gates.FindPagedAsync(page, pageSize);
+        var items = paged.Items.Select(ToDto).ToList();
+        return new PagedResult<ParkingGateDto>(items, paged.TotalCount, paged.Page, paged.PageSize);
     }
 
     public async Task<ParkingGateDto?> GetById(Guid id)
@@ -42,13 +46,32 @@ public class MemoryParkingGateService(IParkingUnitOfWork unit) : IParkingGateSer
         );
     }
 
-    public Task<ParkingGateDto?> AddGate(CreateGateDto dto)
+    public async Task<ParkingGateDto?> AddGate(CreateGateDto dto)
     {
-        throw new NotImplementedException();
+        var entity = dto.ToEntity();
+        var added = await unit.Gates.AddAsync(entity);
+        await unit.SaveChangesAsync();
+        return ToDto(added);
     }
 
-    public Task<ParkingGateDto?> ChangeGateIsOperational(bool isOperational)
+    public async Task<ParkingGateDto?> ChangeGateIsOperational(Guid id, bool isOperational)
     {
-        throw new NotImplementedException();
+        var entity = await unit.Gates.FindByIdAsync(id);
+        if (entity is null)
+            throw new KeyNotFoundException($"Nie znaleziono bramki o id {id}");
+
+        entity.IsOperational = isOperational;
+        var updated = await unit.Gates.UpdateAsync(id, entity);
+        await unit.SaveChangesAsync();
+        return ToDto(updated);
     }
+    
+    private static ParkingGateDto ToDto(ParkingGate entity) =>
+        new(
+            entity.Id,
+            entity.Name,
+            entity.Type.ToString(),
+            entity.Location,
+            entity.IsOperational
+        );
 }

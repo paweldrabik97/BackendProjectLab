@@ -26,6 +26,7 @@ public class MemoryParkingGateRepository<T> : MemoryGenericRepository<ParkingGat
             Location = "Main Gate",
             IsOperational = false
         };
+        _data.Add(secondGate.Id, secondGate);
     }
     public Task<ParkingGate?> FindByParkingGateName(string parkingGateName)
     {
