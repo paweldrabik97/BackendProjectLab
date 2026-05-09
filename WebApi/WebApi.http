@@ -9,7 +9,7 @@ GET {{WebApi_HostAddress}}/api/gates
 Accept: application/json
 
 ###
-GET {{WebApi_HostAddress}}/api/gates/8b44e54e-62c6-4ff2-bde9-3ee6a4fbf80f
+GET {{WebApi_HostAddress}}/api/gates/b871bb2b-63a1-4e24-aebe-2b71a13158f4
 Accept: application/json
 
 ###
@@ -21,4 +21,13 @@ Content-Type: application/json
   "Type": "Entry",
   "Location": "Main Gate",
   "IsOperational": "false"
+}
+
+### Edycja istniejącej bramki
+PUT {{WebApi_HostAddress}}/api/gates/7e49bff2-88f3-412d-bf48-8d843bf1da75
+Content-Type: application/json
+
+{
+  "name": "Brama updated",
+  "type": "Exit"
 }

@@ -1,4 +1,5 @@
 using AppCore.Dto;
+using AppCore.Enums;
 using AppCore.Repositories;
 using AppCore.Wrappers;
 using AppCore.Models;
@@ -74,4 +75,18 @@ public class MemoryParkingGateService(IParkingUnitOfWork unit) : IParkingGateSer
             entity.Location,
             entity.IsOperational
         );
+    
+    public async Task<ParkingGateDto?> UpdateGate(Guid id, UpdateGateDto dto)
+    {
+        var entity = await unit.Gates.FindByIdAsync(id);
+        if (entity is null)
+            return null;
+
+        dto.UpdateExistingEntity(entity);
+
+        var updated = await unit.Gates.UpdateAsync(id, entity);
+        await unit.SaveChangesAsync();
+    
+        return ToDto(updated);
+    }
 }

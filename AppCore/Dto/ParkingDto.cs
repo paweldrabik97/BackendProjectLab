@@ -124,6 +124,18 @@ public record CreateGateDto(
     }
 };
 
+public record UpdateGateDto(
+    string Name,
+    string Type
+)
+{
+    public void UpdateExistingEntity(ParkingGate existingGate)
+    {
+        existingGate.Name = Name;
+        existingGate.Type = Enum.Parse<GateType>(Type, ignoreCase: true);
+    }
+}
+
 // --- Stats ---
 
 public record ParkingStatsDto(

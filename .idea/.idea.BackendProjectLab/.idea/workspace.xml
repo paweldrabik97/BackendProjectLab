@@ -9,13 +9,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c5aae5d-62bd-46e3-a9c8-a2c012dc11b3" name="Changes" comment="Init">
-      <change afterPath="$PROJECT_DIR$/AppCore/Module/AppCoreModule.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppCore/Validators/ParkingGateValidator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/projectSettingsUpdater.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppCore/Validators/UpdateGateDtoValidator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppCore/AppCore.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/AppCore/AppCore.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppCore/Dto/ParkingDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppCore/Dto/ParkingDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppCore/Repositories/IParkingGateService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppCore/Repositories/IParkingGateService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppCore/Validators/ParkingGateValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppCore/Validators/ParkingGateValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Memory/MemoryParkingGateService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Memory/MemoryParkingGateService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/Controller/GatesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/GatesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/WebApi.http" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/WebApi.http" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +42,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/httpRequests/2026-05-09T132704.200.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Dto/ParkingDto.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Models/EntityBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Models/ParkingGate.cs" root0="FORCE_HIGHLIGHTING" />
@@ -51,17 +52,19 @@
     <setting file="file://$PROJECT_DIR$/AppCore/Repositories/IParkingGateRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Repositories/IParkingSessionRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Repositories/IVehicleRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/AppCore/Validators/UpdateGateDtoValidator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Wrappers/PagedResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Memory/MemoryGenericRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Memory/MemoryParkingGateRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Memory/MemoryParkingSessionRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Memory/MemoryVehicleRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UnitTest/MemoryGenericRepositoryTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApi/Controller/GatesController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
@@ -71,7 +74,6 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="3AIwy2zlouYf0muh9nDWovH118A" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -79,10 +81,15 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.WebApi: http.executor": "Run",
+    "HTTP Request.WebApi | #2.executor": "Run",
+    "HTTP Request.WebApi | #3 (1).executor": "Run",
     "HTTP Request.WebApi | #3.executor": "Run",
+    "HTTP Request.WebApi | #4 (1).executor": "Run",
     "HTTP Request.WebApi | #4.executor": "Run",
+    "HTTP Request.WebApi | Edycja istniejącej bramki.executor": "Run",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "git-widget-placeholder": "master",
@@ -101,24 +108,51 @@
     ]
   }
 }]]></component>
+  <component name="RunDashboard">
+    <option name="configurationStatuses">
+      <map>
+        <entry key="HttpClient.HttpRequestRunConfigurationType">
+          <value>
+            <map>
+              <entry key="WebApi | #2" value="STOPPED" />
+              <entry key="WebApi | #3" value="STOPPED" />
+              <entry key="WebApi | #3 (1)" value="STOPPED" />
+              <entry key="WebApi | #4 (1)" value="STOPPED" />
+              <entry key="WebApi | Edycja istniejącej bramki" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.WebApi: http">
-    <configuration name="WebApi | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/WebApi/WebApi.http" index="3" requestIdentifier="#3" runType="Run single request">
+    <configuration name="WebApi | Edycja istniejącej bramki" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/WebApi/WebApi.http" executionIdentifier="Edycja istniejącej bramki" index="5" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="WebApi | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/WebApi/WebApi.http" index="4" requestIdentifier="#4" runType="Run single request">
+    <configuration name="WebApi | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/WebApi/WebApi.http" executionIdentifier="#2" index="2" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="WebApi | #3 (1)" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/WebApi/WebApi.http" executionIdentifier="#3" index="3" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="WebApi | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/WebApi/WebApi.http" index="3" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="WebApi | #4 (1)" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/WebApi/WebApi.http" executionIdentifier="#4" index="4" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="WebApi: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebApi/WebApi.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net9.0" />
       <option name="LAUNCH_PROFILE_NAME" value="http" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
       <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -127,21 +161,25 @@
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/WebApi/WebApi.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net9.0" />
       <option name="LAUNCH_PROFILE_NAME" value="https" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
       <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
       <option name="SEND_DEBUG_REQUEST" value="1" />
       <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <option name="AUTO_ATTACH_CHILDREN" value="0" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2">
         <option name="Build" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.WebApi | Edycja istniejącej bramki" />
+        <item itemvalue="HTTP Request.WebApi | #2" />
         <item itemvalue="HTTP Request.WebApi | #3" />
-        <item itemvalue="HTTP Request.WebApi | #4" />
+        <item itemvalue="HTTP Request.WebApi | #3 (1)" />
+        <item itemvalue="HTTP Request.WebApi | #4 (1)" />
       </list>
     </recent_temporary>
   </component>
