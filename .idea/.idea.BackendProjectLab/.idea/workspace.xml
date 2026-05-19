@@ -8,14 +8,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c5aae5d-62bd-46e3-a9c8-a2c012dc11b3" name="Changes" comment="Init">
-      <change afterPath="$PROJECT_DIR$/AppCore/Validators/UpdateGateDtoValidator.cs" afterDir="false" />
+    <list default="true" id="0c5aae5d-62bd-46e3-a9c8-a2c012dc11b3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/AppCore/Exceptions/GateNotFoundException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppCore/Models/CameraCapture.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppCore/Validators/CreateCameraCaptureDtoValidator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WebApi/Handlers/ProblemDetailsExceptionHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AppCore/Dto/ParkingDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppCore/Dto/ParkingDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppCore/Models/ParkingGate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppCore/Models/ParkingGate.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AppCore/Repositories/IParkingGateService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppCore/Repositories/IParkingGateService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppCore/Validators/ParkingGateValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppCore/Validators/ParkingGateValidator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/Memory/MemoryParkingGateService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Memory/MemoryParkingGateService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/Controller/GatesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/GatesController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/WebApi.http" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/WebApi.http" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,12 +43,15 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/paweldrabik97/BackendProjectLab.git&quot;,
-    &quot;accountId&quot;: &quot;6fa46071-64b8-45fa-aa8d-b9cee1b28fc1&quot;
+    &quot;accountId&quot;: &quot;60d2698c-4f92-453d-866f-266167eb6d2e&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/httpRequests/2026-05-09T132644.200.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/httpRequests/2026-05-09T132704.200.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Dto/ParkingDto.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/AppCore/Exceptions/GateNotFoundException.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/AppCore/Models/CameraCapture.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Models/EntityBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Models/ParkingGate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Models/ParkingSession.cs" root0="FORCE_HIGHLIGHTING" />
@@ -52,6 +60,7 @@
     <setting file="file://$PROJECT_DIR$/AppCore/Repositories/IParkingGateRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Repositories/IParkingSessionRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Repositories/IVehicleRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/AppCore/Validators/CreateCameraCaptureDtoValidator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Validators/UpdateGateDtoValidator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Wrappers/PagedResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Memory/MemoryGenericRepository.cs" root0="FORCE_HIGHLIGHTING" />
@@ -60,6 +69,7 @@
     <setting file="file://$PROJECT_DIR$/Infrastructure/Memory/MemoryVehicleRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UnitTest/MemoryGenericRepositoryTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApi/Controller/GatesController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebApi/Handlers/ProblemDetailsExceptionHandler.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -86,7 +96,11 @@
     "HTTP Request.WebApi | #3.executor": "Run",
     "HTTP Request.WebApi | #4 (1).executor": "Run",
     "HTTP Request.WebApi | #4.executor": "Run",
+    "HTTP Request.WebApi | Dodanie obrazu do istniejącej bramki.executor": "Run",
     "HTTP Request.WebApi | Edycja istniejącej bramki.executor": "Run",
+    "HTTP Request.WebApi | Pobranie obrazów z bramki.executor": "Run",
+    "HTTP Request.WebApi | Test handlera wyjątków (podanie nieistniejącego ID bramki rzuci błąd 404 Problem Details).executor": "Run",
+    "HTTP Request.WebApi | Usunięcie obrazu (zastąp ID zmyślonymi poprawnymi wartościami).executor": "Run",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -99,13 +113,6 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "D:\\Users\\pawel.drabik\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
-      "D:\\Users\\pawel.drabik\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
-      "D:\\Users\\pawel.drabik\\AppData\\Local\\Symbols\\src"
-    ]
   }
 }]]></component>
   <component name="RunDashboard">
@@ -115,10 +122,10 @@
           <value>
             <map>
               <entry key="WebApi | #2" value="STOPPED" />
-              <entry key="WebApi | #3" value="STOPPED" />
-              <entry key="WebApi | #3 (1)" value="STOPPED" />
-              <entry key="WebApi | #4 (1)" value="STOPPED" />
-              <entry key="WebApi | Edycja istniejącej bramki" value="STOPPED" />
+              <entry key="WebApi | Dodanie obrazu do istniejącej bramki" value="STOPPED" />
+              <entry key="WebApi | Pobranie obrazów z bramki" value="STOPPED" />
+              <entry key="WebApi | Test handlera wyjątków (podanie nieistniejącego ID bramki rzuci błąd 404 Problem Details)" value="STOPPED" />
+              <entry key="WebApi | Usunięcie obrazu (zastąp ID zmyślonymi poprawnymi wartościami)" value="STOPPED" />
             </map>
           </value>
         </entry>
@@ -126,19 +133,19 @@
     </option>
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.WebApi: http">
-    <configuration name="WebApi | Edycja istniejącej bramki" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/WebApi/WebApi.http" executionIdentifier="Edycja istniejącej bramki" index="5" runType="Run single request">
+    <configuration name="WebApi | Dodanie obrazu do istniejącej bramki" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/WebApi/WebApi.http" executionIdentifier="Dodanie obrazu do istniejącej bramki" index="6" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="WebApi | Pobranie obrazów z bramki" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/WebApi/WebApi.http" executionIdentifier="Pobranie obrazów z bramki" index="7" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="WebApi | Test handlera wyjątków (podanie nieistniejącego ID bramki rzuci błąd 404 Problem Details)" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/WebApi/WebApi.http" executionIdentifier="Test handlera wyjątków (podanie nieistniejącego ID bramki rzuci błąd 404 Problem Details)" index="8" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="WebApi | Usunięcie obrazu (zastąp ID zmyślonymi poprawnymi wartościami)" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/WebApi/WebApi.http" executionIdentifier="Usunięcie obrazu (zastąp ID zmyślonymi poprawnymi wartościami)" index="9" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="WebApi | #2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/WebApi/WebApi.http" executionIdentifier="#2" index="2" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="WebApi | #3 (1)" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/WebApi/WebApi.http" executionIdentifier="#3" index="3" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="WebApi | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/WebApi/WebApi.http" index="3" runType="Run single request">
-      <method v="2" />
-    </configuration>
-    <configuration name="WebApi | #4 (1)" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/WebApi/WebApi.http" executionIdentifier="#4" index="4" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="WebApi: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
@@ -175,11 +182,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.WebApi | Edycja istniejącej bramki" />
+        <item itemvalue="HTTP Request.WebApi | Usunięcie obrazu (zastąp ID zmyślonymi poprawnymi wartościami)" />
+        <item itemvalue="HTTP Request.WebApi | Pobranie obrazów z bramki" />
+        <item itemvalue="HTTP Request.WebApi | Dodanie obrazu do istniejącej bramki" />
         <item itemvalue="HTTP Request.WebApi | #2" />
-        <item itemvalue="HTTP Request.WebApi | #3" />
-        <item itemvalue="HTTP Request.WebApi | #3 (1)" />
-        <item itemvalue="HTTP Request.WebApi | #4 (1)" />
+        <item itemvalue="HTTP Request.WebApi | Test handlera wyjątków (podanie nieistniejącego ID bramki rzuci błąd 404 Problem Details)" />
       </list>
     </recent_temporary>
   </component>
@@ -194,6 +201,7 @@
       <workItem from="1772293644273" duration="3536000" />
       <workItem from="1773501344428" duration="7259000" />
       <workItem from="1776445234936" duration="4093000" />
+      <workItem from="1779208685032" duration="2030000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -235,7 +243,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774716102710</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Lab 4 complited">
+      <option name="closed" value="true" />
+      <created>1778326702758</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1778326702758</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,6 +265,25 @@
     <MESSAGE value="Init" />
     <MESSAGE value="Lab3" />
     <MESSAGE value="a" />
-    <option name="LAST_COMMIT_MESSAGE" value="a" />
+    <MESSAGE value="Lab 4 complited" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lab 4 complited" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

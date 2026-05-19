@@ -31,3 +31,28 @@ Content-Type: application/json
   "name": "Brama updated",
   "type": "Exit"
 }
+
+
+
+
+### Dodanie obrazu do istniejącej bramki
+POST {{WebApi_HostAddress}}/api/gates/de3598c2-9143-4164-9ac0-5e97e1dcbffb/captures
+Content-Type: application/json
+
+{
+  "licensePlate": "KR 12345",
+  "brand": "Toyota",
+  "color": "Red",
+  "imagePath": "/images/kr12345.jpg"
+}
+
+### Pobranie obrazów z bramki
+GET {{WebApi_HostAddress}}/api/gates/de3598c2-9143-4164-9ac0-5e97e1dcbffb/captures
+Accept: application/json
+
+### Test handlera wyjątków (podanie nieistniejącego ID bramki rzuci błąd 404 Problem Details)
+GET {{WebApi_HostAddress}}/api/gates/00000000-0000-0000-0000-000000000000/captures
+Accept: application/json
+
+### Usunięcie obrazu (zastąp ID zmyślonymi poprawnymi wartościami)
+DELETE {{WebApi_HostAddress}}/api/gates/90869cd3-2a84-4146-a55b-4e5f2a25612f/captures/WSTAW_TUTAJ_ID_MIGAWKI

@@ -47,4 +47,32 @@ public class GatesController(IParkingGateService service): ControllerBase
 
         return Ok(updatedGate);
     }
+    
+    [HttpPost("{gateId:guid}/captures")]
+    [ProducesResponseType(typeof(CameraCaptureDto), StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> AddCameraCapture([FromRoute] Guid gateId, [FromBody] CreateCameraCaptureDto dto)
+    {
+        var capture = await service.AddCapture(gateId, dto);
+        return CreatedAtAction(nameof(GetCaptures), new { gateId }, capture);
+    }
+
+    [HttpGet("{gateId:guid}/captures")]
+    [ProducesResponseType(typeof(IEnumerable<CameraCaptureDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetCaptures([FromRoute] Guid gateId)
+    {
+        var captures = await service.GetCaptures(gateId);
+        return Ok(captures);
+    }
+    
+    [HttpDelete("{gateId:guid}/captures/{captureId:guid}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> DeleteCapture([FromRoute] Guid gateId, [FromRoute] Guid captureId)
+    {
+        await service.DeleteCapture(gateId, captureId);
+        return NoContent();
+    }
 }

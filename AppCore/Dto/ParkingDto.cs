@@ -7,6 +7,7 @@ namespace AppCore.Dto;
 // --- CameraCapture ---
 
 public record CameraCaptureDto(
+    Guid Id,
     string LicensePlate,
     string Brand,
     string Color,
@@ -135,6 +136,14 @@ public record UpdateGateDto(
         existingGate.Type = Enum.Parse<GateType>(Type, ignoreCase: true);
     }
 }
+
+public record CreateCameraCaptureDto(
+    Guid Id,
+    string LicensePlate,
+    string Brand,
+    string Color,
+    string? ImagePath = null
+);
 
 // --- Stats ---
 

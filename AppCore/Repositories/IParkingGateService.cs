@@ -12,4 +12,7 @@ public interface IParkingGateService
     Task<ParkingGateDto?> AddGate(CreateGateDto dto);
     Task<ParkingGateDto?> ChangeGateIsOperational(Guid id, bool isOperational);
     Task<ParkingGateDto?> UpdateGate(Guid id, UpdateGateDto dto);
+    Task<CameraCaptureDto> AddCapture(Guid gateId, CreateCameraCaptureDto dto);
+    Task<IEnumerable<CameraCaptureDto>> GetCaptures(Guid gateId);
+    Task DeleteCapture(Guid gateId, Guid captureId);
 }

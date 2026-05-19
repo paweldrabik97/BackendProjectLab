@@ -8,4 +8,5 @@ public class ParkingGate : EntityBase
     public GateType Type { get; set; }
     public string Location { get; set; }
     public bool IsOperational { get; set; }
+    public List<CameraCapture> CameraCaptures { get; set; } = [];
 }

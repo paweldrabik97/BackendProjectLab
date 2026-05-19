@@ -1,5 +1,6 @@
 using AppCore.Dto;
 using AppCore.Enums;
+using AppCore.Exceptions;
 using AppCore.Repositories;
 using AppCore.Wrappers;
 using AppCore.Models;
@@ -88,5 +89,54 @@ public class MemoryParkingGateService(IParkingUnitOfWork unit) : IParkingGateSer
         await unit.SaveChangesAsync();
     
         return ToDto(updated);
+    }
+    
+    public async Task<CameraCaptureDto> AddCapture(Guid gateId, CreateCameraCaptureDto dto)
+    {
+        var gate = await unit.Gates.FindByIdAsync(gateId);
+    
+        if (gate is null)
+            throw new GateNotFoundException($"Bramka o id {gateId} nie została znaleziona!");
+
+        var capture = new CameraCapture
+        {
+            Id = dto.Id,
+            LicensePlate = dto.LicensePlate,
+            Brand = dto.Brand,
+            Color = dto.Color,
+            ImagePath = dto.ImagePath
+        };
+
+        gate.CameraCaptures.Add(capture);
+    
+        await unit.Gates.UpdateAsync(gateId, gate);
+        await unit.SaveChangesAsync();
+
+        return new CameraCaptureDto(capture.Id, capture.LicensePlate, capture.Brand, capture.Color, gate.Name, capture.ImagePath);
+    }
+
+    public async Task<IEnumerable<CameraCaptureDto>> GetCaptures(Guid gateId)
+    {
+        var gate = await unit.Gates.FindByIdAsync(gateId);
+        if (gate is null)
+            throw new GateNotFoundException($"Bramka o id {gateId} nie została znaleziona!");
+
+        return gate.CameraCaptures.Select(c => 
+            new CameraCaptureDto(c.Id, c.LicensePlate, c.Brand, c.Color, gate.Name, c.ImagePath)).ToList();
+    }
+    
+    public async Task DeleteCapture(Guid gateId, Guid captureId)
+    {
+        var gate = await unit.Gates.FindByIdAsync(gateId);
+        if (gate is null)
+            throw new GateNotFoundException($"Bramka o id {gateId} nie została znaleziona!");
+
+        var capture = gate.CameraCaptures.FirstOrDefault(c => c.Id == captureId);
+        if (capture is not null)
+        {
+            gate.CameraCaptures.Remove(capture);
+            await unit.Gates.UpdateAsync(gateId, gate);
+            await unit.SaveChangesAsync();
+        }
     }
 }

@@ -3,6 +3,7 @@ using AppCore.Models;
 using AppCore.Module;
 using AppCore.Repositories;
 using Infrastructure.Memory;
+using WebApi.Handlers;
 
 namespace WebApi;
 
@@ -23,6 +24,8 @@ public class Program
         builder.Services.AddSingleton<IVehicleRepository, MemoryVehicleRepository<Vehicle>>();
         builder.Services.AddSingleton<IParkingUnitOfWork, MemoryParkingUnitOfWork>();
         builder.Services.AddSingleton<IParkingGateService, MemoryParkingGateService>();
+        builder.Services.AddExceptionHandler<ProblemDetailsExceptionHandler>();    
+        builder.Services.AddProblemDetails();
 
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
         builder.Services.AddOpenApi();
@@ -42,7 +45,7 @@ public class Program
         
         app.UseAuthorization();
         
-        
+        app.UseExceptionHandler();
 
         app.MapControllers();
 
