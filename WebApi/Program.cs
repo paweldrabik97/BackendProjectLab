@@ -2,6 +2,8 @@ using AppCore.Dto;
 using AppCore.Models;
 using AppCore.Module;
 using AppCore.Repositories;
+using AppCore.Services;
+using Infrastructure;
 using Infrastructure.Memory;
 using WebApi.Handlers;
 
@@ -23,7 +25,7 @@ public class Program
         builder.Services.AddSingleton<IParkingSessionRepository, MemoryParkingSessionRepository<ParkingSession>>();
         builder.Services.AddSingleton<IVehicleRepository, MemoryVehicleRepository<Vehicle>>();
         builder.Services.AddSingleton<IParkingUnitOfWork, MemoryParkingUnitOfWork>();
-        builder.Services.AddSingleton<IParkingGateService, MemoryParkingGateService>();
+        builder.Services.AddParkingEfModule(builder.Configuration);
         builder.Services.AddExceptionHandler<ProblemDetailsExceptionHandler>();    
         builder.Services.AddProblemDetails();
 

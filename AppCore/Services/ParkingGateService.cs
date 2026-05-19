@@ -1,13 +1,12 @@
 using AppCore.Dto;
-using AppCore.Enums;
 using AppCore.Exceptions;
+using AppCore.Models;
 using AppCore.Repositories;
 using AppCore.Wrappers;
-using AppCore.Models;
 
-namespace Infrastructure.Memory;
+namespace AppCore.Services;
 
-public class MemoryParkingGateService(IParkingUnitOfWork unit) : IParkingGateService
+public class ParkingGateService(IParkingUnitOfWork unit) : IParkingGateService
 {
     public async Task<PagedResult<ParkingGateDto>> GetAll(int page, int pageSize)
     {

@@ -9,19 +9,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c5aae5d-62bd-46e3-a9c8-a2c012dc11b3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/AppCore/Exceptions/GateNotFoundException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppCore/Models/CameraCapture.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppCore/Validators/CreateCameraCaptureDtoValidator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WebApi/Handlers/ProblemDetailsExceptionHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BackendProjectLab/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppCore/Dto/ParkingDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppCore/Dto/ParkingDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppCore/Models/ParkingGate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppCore/Models/ParkingGate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppCore/Repositories/IParkingGateService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppCore/Repositories/IParkingGateService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Memory/MemoryParkingGateService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Memory/MemoryParkingGateService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controller/GatesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controller/GatesController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AppCore/Models/ISystemUser.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/EntityFramework/Context/ParkingDbContext.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/EntityFramework/Entities/AppRole.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/EntityFramework/Entities/AppUser.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/EntityFramework/Repositories/EfGenericRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/EntityFramework/Repositories/EfParkingGateRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/EntityFramework/UnitOfWork/EfParkingUnitOfWork.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/ParkingInfrastructureModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Infrastructure.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Memory/MemoryParkingGateService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppCore/Services/ParkingGateService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/WebApi.http" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/WebApi.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/WebApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/WebApi.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +53,7 @@
     <setting file="file://$PROJECT_DIR$/AppCore/Exceptions/GateNotFoundException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Models/CameraCapture.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Models/EntityBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/AppCore/Models/ISystemUser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Models/ParkingGate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Models/ParkingSession.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Models/ParkingTariff.cs" root0="FORCE_HIGHLIGHTING" />
@@ -63,10 +64,17 @@
     <setting file="file://$PROJECT_DIR$/AppCore/Validators/CreateCameraCaptureDtoValidator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Validators/UpdateGateDtoValidator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AppCore/Wrappers/PagedResult.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/EntityFramework/Context/ParkingDbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/EntityFramework/Entities/AppRole.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/EntityFramework/Entities/AppUser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/EntityFramework/Repositories/EfGenericRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/EntityFramework/Repositories/EfParkingGateRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/EntityFramework/UnitOfWork/EfParkingUnitOfWork.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Memory/MemoryGenericRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Memory/MemoryParkingGateRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Memory/MemoryParkingSessionRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Memory/MemoryVehicleRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/ParkingInfrastructureModule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/UnitTest/MemoryGenericRepositoryTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApi/Controller/GatesController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebApi/Handlers/ProblemDetailsExceptionHandler.cs" root0="FORCE_HIGHLIGHTING" />
@@ -201,7 +209,7 @@
       <workItem from="1772293644273" duration="3536000" />
       <workItem from="1773501344428" duration="7259000" />
       <workItem from="1776445234936" duration="4093000" />
-      <workItem from="1779208685032" duration="2030000" />
+      <workItem from="1779208685032" duration="6313000" />
     </task>
     <task id="LOCAL-00001" summary="Init">
       <option name="closed" value="true" />
@@ -251,7 +259,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778326702758</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Lab5">
+      <option name="closed" value="true" />
+      <created>1779210758323</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1779210758323</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +282,8 @@
     <MESSAGE value="Lab3" />
     <MESSAGE value="a" />
     <MESSAGE value="Lab 4 complited" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lab 4 complited" />
+    <MESSAGE value="Lab5" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lab5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
