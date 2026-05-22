@@ -10,6 +10,10 @@ namespace Infrastructure.EntityFramework.Context;
 public class ParkingDbContext : IdentityDbContext<AppUser, AppRole, string>
 {
     public DbSet<ParkingGate> Gates { get; set; }
+    public DbSet<RefreshToken> RefreshTokens { get; set; }
+    public DbSet<RegisteredVehicle> RegisteredVehicles { get; set; }
+    public DbSet<DriverDiscount> DriverDiscounts { get; set; }
+    public DbSet<WalletTransaction> WalletTransactions { get; set; }
 
     public ParkingDbContext() { }
     public ParkingDbContext(DbContextOptions<ParkingDbContext> options) : base(options) { }

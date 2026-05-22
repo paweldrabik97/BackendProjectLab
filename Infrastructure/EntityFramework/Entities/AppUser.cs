@@ -13,6 +13,8 @@ public class AppUser : IdentityUser, ISystemUser
     public DateTime CreatedAt { get; set; }
     public DateTime? LastLoginAt { get; private set; }
     public DateTime? DeactivatedAt { get; private set; }
+    public decimal WalletBalance { get; set; }
+    public int TotalSessions { get; set; }
     
     public void Activate()
     {

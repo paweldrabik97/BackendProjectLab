@@ -4,7 +4,9 @@ using AppCore.Module;
 using AppCore.Repositories;
 using AppCore.Services;
 using Infrastructure;
+using Infrastructure.EntityFramework.Context;
 using Infrastructure.Memory;
+using Microsoft.EntityFrameworkCore;
 using WebApi.Handlers;
 
 namespace WebApi;
@@ -21,12 +23,12 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddAuthorization();
-        builder.Services.AddSingleton<IParkingGateRepository, MemoryParkingGateRepository<ParkingGate>>();
         builder.Services.AddSingleton<IParkingSessionRepository, MemoryParkingSessionRepository<ParkingSession>>();
         builder.Services.AddSingleton<IVehicleRepository, MemoryVehicleRepository<Vehicle>>();
-        builder.Services.AddSingleton<IParkingUnitOfWork, MemoryParkingUnitOfWork>();
         builder.Services.AddParkingEfModule(builder.Configuration);
-        builder.Services.AddExceptionHandler<ProblemDetailsExceptionHandler>();    
+        builder.Services.AddExceptionHandler<ProblemDetailsExceptionHandler>();
+        builder.Services.AddSingleton<JwtSettings>();
+        builder.Services.AddJwt(new JwtSettings(builder.Configuration));
         builder.Services.AddProblemDetails();
 
         // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -37,14 +39,26 @@ public class Program
 
         var app = builder.Build();
 
+        // Automatyczne migracje + seeding przy starcie
+        using (var scope = app.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<ParkingDbContext>();
+            db.Database.Migrate();
+
+            var seeder = scope.ServiceProvider.GetRequiredService<IDataSeeder>();
+            seeder.SeedAsync();
+        }
+
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
             app.MapOpenApi();
         }
 
-        app.UseHttpsRedirection();
-        
+        if (!app.Environment.IsDevelopment())
+            app.UseHttpsRedirection();
+
+        app.UseAuthentication();
         app.UseAuthorization();
         
         app.UseExceptionHandler();

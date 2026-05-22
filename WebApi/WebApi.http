@@ -1,42 +1,59 @@
-@WebApi_HostAddress = http://localhost:5151
+@baseUrl = http://localhost:5151
+@adminEmail = admin@app.pl
+@adminPassword = Admin@123!
 
-GET {{WebApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
-
-GET {{WebApi_HostAddress}}/api/gates
-Accept: application/json
-
-###
-GET {{WebApi_HostAddress}}/api/gates/b871bb2b-63a1-4e24-aebe-2b71a13158f4
-Accept: application/json
-
-###
-POST {{WebApi_HostAddress}}/api/gates
+### ── 1. Logowanie — skopiuj accessToken do zmiennej @token poniżej ──────────
+POST {{baseUrl}}/api/auth/login
 Content-Type: application/json
 
 {
-  "Name": "ABaaa",
-  "Type": "Entry",
-  "Location": "Main Gate",
-  "IsOperational": "false"
+  "email": "{{adminEmail}}",
+  "password": "{{adminPassword}}"
 }
 
-### Edycja istniejącej bramki
-PUT {{WebApi_HostAddress}}/api/gates/7e49bff2-88f3-412d-bf48-8d843bf1da75
+### ── Wklej token z odpowiedzi powyżej ───────────────────────────────────────
+@token = WKLEJ_TOKEN_TUTAJ
+
+### ── 2. Dane zalogowanego użytkownika ───────────────────────────────────────
+GET {{baseUrl}}/api/auth/me
+Authorization: Bearer {{token}}
+
+### ── 3. Pobranie listy bramek (paginacja) ───────────────────────────────────
+GET {{baseUrl}}/api/gates?page=1&size=10
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### ── 4. Dodanie bramki ───────────────────────────────────────────────────────
+POST {{baseUrl}}/api/gates
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "name": "Brama updated",
-  "type": "Exit"
+  "name": "Bramka A",
+  "type": "Entry",
+  "location": "Wejście główne"
 }
 
+### ── 5. Pobranie bramki po ID (wklej ID z odpowiedzi żądania nr 4) ──────────
+@gateId = WKLEJ_ID_BRAMKI_TUTAJ
 
+GET {{baseUrl}}/api/gates/{{gateId}}
+Authorization: Bearer {{token}}
+Accept: application/json
 
+### ── 6. Edycja bramki ────────────────────────────────────────────────────────
+PUT {{baseUrl}}/api/gates/{{gateId}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
 
-### Dodanie obrazu do istniejącej bramki
-POST {{WebApi_HostAddress}}/api/gates/de3598c2-9143-4164-9ac0-5e97e1dcbffb/captures
+{
+  "name": "Bramka A (zaktualizowana)",
+  "type": "Bidirectional"
+}
+
+### ── 7. Dodanie zdjęcia z kamery do bramki ──────────────────────────────────
+POST {{baseUrl}}/api/gates/{{gateId}}/captures
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
@@ -46,13 +63,40 @@ Content-Type: application/json
   "imagePath": "/images/kr12345.jpg"
 }
 
-### Pobranie obrazów z bramki
-GET {{WebApi_HostAddress}}/api/gates/de3598c2-9143-4164-9ac0-5e97e1dcbffb/captures
+### ── 8. Pobranie zdjęć z bramki ─────────────────────────────────────────────
+GET {{baseUrl}}/api/gates/{{gateId}}/captures
+Authorization: Bearer {{token}}
 Accept: application/json
 
-### Test handlera wyjątków (podanie nieistniejącego ID bramki rzuci błąd 404 Problem Details)
-GET {{WebApi_HostAddress}}/api/gates/00000000-0000-0000-0000-000000000000/captures
+### ── 9. Usunięcie zdjęcia (wklej ID capture z odpowiedzi żądania nr 7) ─────
+@captureId = WKLEJ_ID_CAPTURE_TUTAJ
+
+DELETE {{baseUrl}}/api/gates/{{gateId}}/captures/{{captureId}}
+Authorization: Bearer {{token}}
+
+### ── 10. Test 401 — brak tokenu ─────────────────────────────────────────────
+GET {{baseUrl}}/api/gates
 Accept: application/json
 
-### Usunięcie obrazu (zastąp ID zmyślonymi poprawnymi wartościami)
-DELETE {{WebApi_HostAddress}}/api/gates/90869cd3-2a84-4146-a55b-4e5f2a25612f/captures/WSTAW_TUTAJ_ID_MIGAWKI
+### ── 11. Test 404 — nieistniejąca bramka ────────────────────────────────────
+GET {{baseUrl}}/api/gates/00000000-0000-0000-0000-000000000000/captures
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### ── 12. Odświeżenie tokenu (wklej refreshToken z logowania) ────────────────
+@refreshToken = WKLEJ_REFRESH_TOKEN_TUTAJ
+
+POST {{baseUrl}}/api/auth/refresh
+Content-Type: application/json
+
+{
+  "accessToken": "{{token}}",
+  "refreshToken": "{{refreshToken}}"
+}
+
+### ── 13. Wylogowanie (unieważnienie refresh tokenu) ─────────────────────────
+POST {{baseUrl}}/api/auth/revoke
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+"{{refreshToken}}"

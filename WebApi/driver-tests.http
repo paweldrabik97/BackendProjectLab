@@ -1,0 +1,191 @@
+# ══════════════════════════════════════════════════════════════
+#  ZMIENNE — uzupełnij po kroku 1 i kroku 6
+#  @token    → skopiuj accessToken z odpowiedzi kroku 1
+#  @vehicleId → skopiuj id z odpowiedzi kroku 6
+# ══════════════════════════════════════════════════════════════
+
+@baseUrl   = http://localhost:5151
+@plate     = WA9989
+@vehicleId = a1618a45-7b15-44b4-8233-3a154738619d
+@token =   eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjkzQTdGRkRELTA1N0YtNDAyMS05QzY4LUZFMDY5NTFGRkE2NSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6Imphbi5rb3dhbHNraUBhcHAucGwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9naXZlbm5hbWUiOiJKYW4iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zdXJuYW1lIjoiS293YWxza2kiLCJkZXBhcnRtZW50IjoiU2FsZXMiLCJqdGkiOiIyYzNhYzA5ZS1jY2QzLTQ4NjItOWU5Yy05ZjYzMThkOGM0NTAiLCJpYXQiOiIxNzc5NDcxNjI2IiwibmJmIjoxNzc5NDcxNjI2LCJleHAiOjE3Nzk0NzUyMjYsImlzcyI6IlBhcmtpbmdBcGkiLCJhdWQiOiJQYXJraW5nQ2xpZW50In0.9tYUszZgFHUX3WEfxi-A-n2pTyEP9ruJzspJLXCHavo
+
+
+
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 1 — Logowanie
+### ══════════════════════════════════════════════════════════════
+
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "jan.kowalski@app.pl",
+  "password": "Manager@123!"
+}
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 2 — Anonimowy: wjazd na parking
+### ══════════════════════════════════════════════════════════════
+
+POST {{baseUrl}}/api/sessions/entry
+Content-Type: application/json
+
+{
+  "plateNumber": "{{plate}}",
+  "gateName": "Bramka A"
+}
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 3 — Anonimowy: sprawdzenie stanu sesji
+### ══════════════════════════════════════════════════════════════
+
+GET {{baseUrl}}/api/sessions/{{plate}}/status
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 4 — Anonimowy: płatność i wyjazd
+### ══════════════════════════════════════════════════════════════
+
+POST {{baseUrl}}/api/sessions/{{plate}}/pay
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 5 — Anonimowy: historia sesji pojazdu po nr rejestracyjnym
+###  (wykonaj po KROKU 4 — sesja powinna być widoczna jako zakończona)
+### ══════════════════════════════════════════════════════════════
+
+GET {{baseUrl}}/api/sessions/{{plate}}/history
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 5b — Anonimowy: historia dla pojazdu bez sesji
+###  oczekiwany wynik: 200 z pustą tablicą []
+### ══════════════════════════════════════════════════════════════
+
+GET {{baseUrl}}/api/sessions/NIEISTNIEJE99/history
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 6 — Test 404: status dla nieistniejącej sesji
+### ══════════════════════════════════════════════════════════════
+
+GET {{baseUrl}}/api/sessions/NIEISTNIEJE99/status
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 6 — Kierowca: rejestracja pojazdu
+###  → po wykonaniu skopiuj "id" z odpowiedzi do @vehicleId na górze
+### ══════════════════════════════════════════════════════════════
+
+POST {{baseUrl}}/api/driver/vehicles
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "plateNumber": "{{plate}}",
+  "brand": "Toyota"
+}
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 7 — Kierowca: lista zarejestrowanych pojazdów
+### ══════════════════════════════════════════════════════════════
+
+GET {{baseUrl}}/api/driver/vehicles
+Authorization: Bearer {{token}}
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 8 — Kierowca: historia sesji pojazdu
+### ══════════════════════════════════════════════════════════════
+
+GET {{baseUrl}}/api/driver/vehicles/{{vehicleId}}/history
+Authorization: Bearer {{token}}
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 9 — Kierowca: dostępne rabaty
+###  (po kroku 6 powinien pojawić się RegistrationBonus)
+### ══════════════════════════════════════════════════════════════
+
+GET {{baseUrl}}/api/driver/discounts
+Authorization: Bearer {{token}}
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 10 — Kierowca: aktywacja bonusu rejestracyjnego
+### ══════════════════════════════════════════════════════════════
+
+POST {{baseUrl}}/api/driver/discounts/RegistrationBonus/activate
+Authorization: Bearer {{token}}
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 11 — Kierowca: doładowanie portfela
+### ══════════════════════════════════════════════════════════════
+
+POST {{baseUrl}}/api/driver/wallet/topup
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "amount": 50.00
+}
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 12 — Kierowca: sprawdzenie salda
+### ══════════════════════════════════════════════════════════════
+
+GET {{baseUrl}}/api/driver/wallet
+Authorization: Bearer {{token}}
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 13 — Kierowca: wjazd zarejestrowanym pojazdem
+### ══════════════════════════════════════════════════════════════
+
+POST {{baseUrl}}/api/sessions/entry
+Content-Type: application/json
+
+{
+  "plateNumber": "{{plate}}",
+  "gateName": "Bramka A"
+}
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 14 — Kierowca: sprawdzenie aktywnej sesji
+### ══════════════════════════════════════════════════════════════
+
+GET {{baseUrl}}/api/driver/sessions/{{plate}}/status
+Authorization: Bearer {{token}}
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 15 — Kierowca: płatność z portfela (z rabatami)
+### ══════════════════════════════════════════════════════════════
+
+POST {{baseUrl}}/api/driver/sessions/pay
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "plateNumber": "{{plate}}"
+}
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 16 — Kierowca: historia transakcji portfela
+### ══════════════════════════════════════════════════════════════
+
+GET {{baseUrl}}/api/driver/wallet/transactions
+Authorization: Bearer {{token}}
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 17 — Test błędu: aktywacja LoyaltyDiscount bez 100 sesji
+###  oczekiwany wynik: 500
+### ══════════════════════════════════════════════════════════════
+
+POST {{baseUrl}}/api/driver/discounts/LoyaltyDiscount/activate
+Authorization: Bearer {{token}}
+
+### ══════════════════════════════════════════════════════════════
+###  KROK 18 — Test błędu: duplikat rejestracji pojazdu
+###  oczekiwany wynik: 500
+### ══════════════════════════════════════════════════════════════
+
+POST {{baseUrl}}/api/driver/vehicles
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "plateNumber": "{{plate}}",
+  "brand": "Toyota"
+}
