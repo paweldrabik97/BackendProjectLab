@@ -5,9 +5,9 @@
 # ══════════════════════════════════════════════════════════════
 
 @baseUrl   = http://localhost:5151
-@plate     = WA9989
+@plate     = WA9937
 @vehicleId = a1618a45-7b15-44b4-8233-3a154738619d
-@token =   eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjkzQTdGRkRELTA1N0YtNDAyMS05QzY4LUZFMDY5NTFGRkE2NSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6Imphbi5rb3dhbHNraUBhcHAucGwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9naXZlbm5hbWUiOiJKYW4iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zdXJuYW1lIjoiS293YWxza2kiLCJkZXBhcnRtZW50IjoiU2FsZXMiLCJqdGkiOiIyYzNhYzA5ZS1jY2QzLTQ4NjItOWU5Yy05ZjYzMThkOGM0NTAiLCJpYXQiOiIxNzc5NDcxNjI2IiwibmJmIjoxNzc5NDcxNjI2LCJleHAiOjE3Nzk0NzUyMjYsImlzcyI6IlBhcmtpbmdBcGkiLCJhdWQiOiJQYXJraW5nQ2xpZW50In0.9tYUszZgFHUX3WEfxi-A-n2pTyEP9ruJzspJLXCHavo
+@token =   eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjkzQTdGRkRELTA1N0YtNDAyMS05QzY4LUZFMDY5NTFGRkE2NSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6Imphbi5rb3dhbHNraUBhcHAucGwiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9naXZlbm5hbWUiOiJKYW4iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zdXJuYW1lIjoiS293YWxza2kiLCJkZXBhcnRtZW50IjoiU2FsZXMiLCJqdGkiOiI4NmExYzUzNy1hYjhjLTQ3ZGEtOTQ4MS1iN2E2MzZlMjJlYzMiLCJpYXQiOiIxNzc5NTQ2Mzc0IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQ3VzdG9tZXIiLCJuYmYiOjE3Nzk1NDYzNzQsImV4cCI6MTc3OTU0OTk3NCwiaXNzIjoiUGFya2luZ0FwaSIsImF1ZCI6IlBhcmtpbmdDbGllbnQifQ.bEAp-m4Fi4upq9YaRQPBot21HtsOfDeG97Ch_HoIbjQ
 
 
 
@@ -120,7 +120,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "amount": 50.00
+  "amount": 60.00
 }
 
 ### ══════════════════════════════════════════════════════════════

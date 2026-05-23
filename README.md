@@ -1,5 +1,3 @@
-Here's the improved `README.md` file, incorporating the new content while maintaining the existing structure and information:
-
 # BackendProjectLab
 
 ## Autor
@@ -21,6 +19,21 @@ Here's the improved `README.md` file, incorporating the new content while mainta
   - Tworzenie, uniewa¿nianie i przechowywanie refresh tokenów (encja `RefreshToken`).
 - **Logowanie i obs³uga b³êdów**
   - Logowanie operacji seedowania oraz b³êdów Identity.
+- **Zarz¹dzanie pojazdami i kierowcami**
+  - Rejestracja nowych pojazdów przez kierowców.
+  - Przypisywanie pojazdów do kont u¿ytkowników.
+  - Zarz¹dzanie danymi pojazdów (edytowanie, usuwanie).
+- **Portfel kierowcy**
+  - Integracja z systemem p³atnoœci.
+  - Mo¿liwoœæ do³adowania portfela.
+  - Historia transakcji portfela.
+- **Rabaty i promocje**
+  - Tworzenie i zarz¹dzanie promocjami.
+  - Mo¿liwoœæ przypisywania rabatów do transakcji p³atniczych.
+  - Historia zastosowanych rabatów.
+- **Sesje kierowców**
+  - Tworzenie i zarz¹dzanie sesjami.
+  - Historia sesji kierowcy.
 
 ## Link do repozytorium
 
