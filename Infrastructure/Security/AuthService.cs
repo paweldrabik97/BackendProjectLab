@@ -106,7 +106,7 @@ public class AuthService : IAuthService
 
     private async Task<AuthResponseDto> GenerateAuthResponseAsync(AppUser user)
     {
-        var roles        = await _userManager.GetRolesAsync(user);
+        var roles = await _userManager.GetRolesAsync(user);
         var accessToken  = GenerateAccessToken(user, roles);
         var refreshToken = await GenerateRefreshTokenAsync(user.Id);
 

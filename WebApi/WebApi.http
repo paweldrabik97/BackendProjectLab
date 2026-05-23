@@ -14,6 +14,7 @@ Content-Type: application/json
 ### ── Wklej token z odpowiedzi powyżej ───────────────────────────────────────
 @token = WKLEJ_TOKEN_TUTAJ
 
+
 ### ── 2. Dane zalogowanego użytkownika ───────────────────────────────────────
 GET {{baseUrl}}/api/auth/me
 Authorization: Bearer {{token}}
@@ -85,6 +86,7 @@ Accept: application/json
 
 ### ── 12. Odświeżenie tokenu (wklej refreshToken z logowania) ────────────────
 @refreshToken = WKLEJ_REFRESH_TOKEN_TUTAJ
+
 
 POST {{baseUrl}}/api/auth/refresh
 Content-Type: application/json
